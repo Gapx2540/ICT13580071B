@@ -1,4 +1,4 @@
-﻿..using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,23 @@ namespace ICT13580071B
         {
             InitializeComponent();
 
-            MainPage = new ICT13580071B.MainPage();
+            var np = new NavigationPage(new NavPage1());
+
+            var tp = new TabbedPage();
+            tp.Children.Add(new TabPage1());
+            tp.Children.Add(new TabPage2());
+            tp.Children.Add(new TabPage3());
+
+            var cp = new CarouselPage();
+            cp.Children.Add(new TabPage1());
+            cp.Children.Add(new TabPage2());
+            cp.Children.Add(new TabPage3());
+
+            var mp = new MasterDetailPage();
+            mp.Master = new MenuPage();
+            mp.Detail = new NavigationPage(new ICT13580071BPage());
+
+            MainPage = mp;
         }
 
         protected override void OnStart()
